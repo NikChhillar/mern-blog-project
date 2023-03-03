@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const RegisterPage = () => {
   //
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
 
   //
 
@@ -21,9 +23,13 @@ const RegisterPage = () => {
       alert("Registration failed...");
     } else {
       alert("Successfully registered....");
+      setSuccess(true);
     }
   }
 
+  if (success) {
+    return <Navigate to={"/login"} />;
+  }
   //
   return (
     <form className="register" onSubmit={register}>

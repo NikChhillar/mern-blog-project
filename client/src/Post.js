@@ -1,6 +1,8 @@
 import React from "react";
+import { format } from "date-fns";
+// import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post = ({ _id, title, summary, cover, content, createdAt, author }) => {
   return (
     <div className="post">
       <div className="image">
@@ -10,19 +12,14 @@ const Post = () => {
         />
       </div>
       <div className="texts">
-        <h2>Cat staring without any reason</h2>
+        <h2>{title}</h2>
         <p className="info">
           <a href="/" className="author">
-            Nikhil
+            {author}
           </a>
-          <time>2023-03-01 10:38</time>
+          <time>{format(new Date(createdAt), "MMM d, yyyy ~ HH:mm")}</time>
         </p>
-        <p className="summary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-          repellendus cumque necessitatibus soluta aperiam delectus voluptatum
-          distinctio veritatis nisi deserunt consectetur, magnam quia vero
-          sapiente ducimus qui iusto illum corporis!
-        </p>
+        <p className="summary">{summary}</p>
       </div>
     </div>
   );
