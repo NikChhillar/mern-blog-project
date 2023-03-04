@@ -15,7 +15,8 @@ const Header = () => {
         setUserInfo(userInfo);
       });
     });
-  }, [setUserInfo]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const logout = () => {
     fetch("http://localhost:5000/logout", {
@@ -30,13 +31,13 @@ const Header = () => {
   return (
     <header>
       <Link to="/" className="logo">
-        MyBlog
+        BlogZ ~({username})
       </Link>
       <nav>
         {username && (
           <>
             <Link to={"/create"}>Create new post</Link>
-            <Link onClick={logout}>Logout ~ {username}</Link>
+            <Link to={'/login'} onClick={logout}>Logout ~ {username}</Link>
           </>
         )}
         {!username && (
